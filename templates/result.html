@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Match Result</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .score {
+            font-size: 28px;
+            margin: 15px 0;
+        }
+        .good { color: green; }
+        .avg { color: orange; }
+        .bad { color: red; }
+        ul {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>Resume Match Analysis</h2>
+
+    <div class="score">
+        Match Score: <b>{{ match_score }}%</b>
+    </div>
+
+    <div class="score">
+        ATS Score: 
+        <b class="{% if ats_score > 70 %}good{% elif ats_score > 40 %}avg{% else %}bad{% endif %}">
+            {{ ats_score }}%
+        </b>
+    </div>
+
+    <h3>Matched Skill Phrases</h3>
+    <ul>
+        {% for phrase in phrases %}
+        <li>{{ phrase }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/ui">Try another</a>
+</div>
+</body>
+</html>

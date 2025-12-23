@@ -2,7 +2,10 @@ from flask import Flask,request, jsonify,render_template
 import os
 
 from utils.preprocess import clean_text, extract_text_from_pdf
-from model.matcher import calculate_match
+from model.matcher import calculate_match, calculate_ats_score
+from model.matcher import calculate_match, phrase_ats_score
+
+
 # from flask import render_template
 
 
@@ -13,7 +16,7 @@ os.makedirs(UPLOAD_FOLDER,exist_ok=True)
 
 @app.route("/")
 def home():
-    return "AI Resume Job Matcher is running!"
+    return render_template("homepage.html")
 
 @app.route("/ui")
 def ui():
@@ -32,12 +35,27 @@ def match_job_resume():
     resume_text = extract_text_from_pdf(resume_path)
     resume_clean = clean_text(resume_text)
     job_clean = clean_text(job_description)
+    
 
-    score, keywords = calculate_match(resume_clean,job_clean)
-    return jsonify({
-        "match_score":score,
-        "matching_keywords":keywords
-    })
+    score, keywords = calculate_match(resume_clean, job_clean)
+    ats_score = calculate_ats_score(keywords, job_clean)
+    phrase_score, matched_phrases = phrase_ats_score(resume_clean, job_clean)
+
+    
+#     return jsonify({
+#     "match_score": score,
+#     "ats_score": ats_score,
+#     "matching_keywords": keywords
+# })
+    return render_template(
+    "result.html",
+    match_score=score,
+    ats_score=phrase_score,
+    keywords=keywords,
+    phrases=matched_phrases
+)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

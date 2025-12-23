@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Job Matcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #eef2ff, #f8fafc);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            padding: 50px;
+            max-width: 700px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1e3a8a;
+        }
+        p {
+            color: #555;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        ul {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1e40af;
+        }
+        .note {
+            margin-top: 15px;
+            font-size: 13px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>AI Resume–Job Matcher</h1>
+
+    <p>
+        Analyze how well a resume matches a job description using
+        <b>AI-powered ATS-style scoring</b>.
+    </p>
+
+    <ul>
+        <li>📄 Upload Resume (PDF)</li>
+        <li>🧠 AI-based Match & ATS Score</li>
+        <li>📊 Skill & Keyword Overlap</li>
+    </ul>
+
+    <form action="/ui">
+        <button type="submit">Start Analysis</button>
+    </form>
+
+    <p class="note">
+        * Scores are AI-based estimations for screening assistance.
+    </p>
+</div>
+
+</body>
+</html>

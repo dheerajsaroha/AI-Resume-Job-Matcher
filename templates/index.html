@@ -2,18 +2,57 @@
 <html>
 <head>
     <title>AI Resume Job Matcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+        }
+        textarea, input[type="file"] {
+            width: 100%;
+            margin-top: 10px;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .note {
+            font-size: 14px;
+            color: gray;
+        }
+    </style>
 </head>
 <body>
-    <h2>AI Resume Job Matcher</h2>
+<div class="container">
+    <h2>AI Resume – Job Matching System</h2>
 
     <form action="/match" method="post" enctype="multipart/form-data">
-        <label>Upload Resume (PDF):</label><br><br>
-        <input type="file" name="resume" required><br><br>
+        <label>Upload Resume (PDF)</label>
+        <input type="file" name="resume" required>
 
-        <label>Paste Job Description:</label><br><br>
-        <textarea name="job_description" rows="8" cols="60" required></textarea><br><br>
+        <label>Paste Job Description</label>
+        <textarea name="job_description" rows="8" required></textarea>
 
-        <button type="submit">Match Resume</button>
+        <button type="submit">Analyze Match</button>
     </form>
+
+    <p class="note">
+        *ATS score is an AI-based estimation using keyword relevance.
+    </p>
+</div>
 </body>
 </html>
