@@ -1,8 +1,9 @@
-from flask import Flask,request, jsonify
+from flask import Flask,request, jsonify,render_template
 import os
 
 from utils.preprocess import clean_text, extract_text_from_pdf
 from model.matcher import calculate_match
+# from flask import render_template
 
 
 app = Flask(__name__)
@@ -13,6 +14,10 @@ os.makedirs(UPLOAD_FOLDER,exist_ok=True)
 @app.route("/")
 def home():
     return "AI Resume Job Matcher is running!"
+
+@app.route("/ui")
+def ui():
+    return render_template("index.html")
 
 @app.route("/match",methods=["POST"])
 def match_job_resume():
